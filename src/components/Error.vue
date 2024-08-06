@@ -1,4 +1,5 @@
 <script>
+    import { ref } from 'vue';
     let message = ref('Data fetching failed, please check your network connection')
 </script>
 
