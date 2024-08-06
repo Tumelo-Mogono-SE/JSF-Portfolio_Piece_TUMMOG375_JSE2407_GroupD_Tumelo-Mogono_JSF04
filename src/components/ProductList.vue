@@ -4,6 +4,10 @@
     import CardSkeleton from './CardSkeleton.vue';
     import Error from './Error.vue';
     
+    /**
+    * Initializes the product store.
+    * @constant {Object}
+    */
     const productStore = useProductStore();
 </script>
 

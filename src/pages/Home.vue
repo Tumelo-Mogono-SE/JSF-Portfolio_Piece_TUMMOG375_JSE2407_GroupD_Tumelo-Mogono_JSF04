@@ -5,10 +5,17 @@
     import Sort from '../components/Sort.vue';
     import ProductList from '../components/ProductList.vue';
 
+    /**
+    * Initializes the product store.
+    * @constant {Object}
+    */
     const store = useProductStore();
 
+    /**
+    * Fetches the product data when the component is mounted.
+    */
     onMounted(() => {
-    store.fetchProducts();
+        store.fetchProducts();
     });
 </script>
 
