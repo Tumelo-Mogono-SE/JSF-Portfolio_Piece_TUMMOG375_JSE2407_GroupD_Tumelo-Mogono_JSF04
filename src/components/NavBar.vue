@@ -16,6 +16,12 @@
       isNavbarVisible.value = !isNavbarVisible.value
   }
 
+  onMounted(() => {
+    cartStore.loadCart()
+  })
+
+
+
   const handleLogout = () => {
     authenticationStore.logout();
     router.push('/');
@@ -85,7 +91,7 @@
                 >
                     <div class="t-0 absolute left-5 -top-4">
                         <p class="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-                          
+                          {{ cartStore.cartItemCount }}
                         </p>
                     </div>
                     <svg
@@ -108,7 +114,7 @@
                 <router-link
                     to="/cart"
                 >
-                    Cart ()
+                    Cart ({{ cartStore.cartItemCount }})
                 </router-link>  
               </li>
               <li class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
