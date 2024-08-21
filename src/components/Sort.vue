@@ -1,24 +1,25 @@
 <script setup>
     import { ref } from 'vue';
-    import { useProductStore } from '../store/useProductStore';
     
-    /**
-    * Initializes the product store.
-    * @constant {Object}
-    */
-    const store = useProductStore();
+
+    const props = defineProps({
+      store: {
+        type: Object,
+        required:true
+      }
+    })
 
     /**
     * Ref for selected sort option.
     * @constant {Ref<string>}
     */
-    const selectedSort = ref(store.sorting);
+    const selectedSort = ref(props.store.sorting);
     
     /**
     * Applies the selected sort option by updating the store.
     */
     const applySort = () => {
-        store.setSorting(selectedSort.value);
+        props.store.setSorting(selectedSort.value);
     };
 </script>
 
