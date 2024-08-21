@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage.vue';
 import Cart from '../pages/Cart.vue';
 import Comparison from '../pages/Comparison.vue';
 import Wishlist from '../pages/Wishlist.vue';
+import CheckoutPage from '../pages/CheckoutPage.vue'
 import { useAuthenticationStore } from '../store/AuthenticationStore';
 
 /**
@@ -36,6 +37,8 @@ const routes = [
     { path: '/comparisonlist', component: Comparison, meta: { requiresAuth: true }},
 
     { path: '/wishlist', component: Wishlist, meta: {requiresAuth: true}  },
+
+    { path: '/checkout', component: CheckoutPage, meta: { requiresAuth: true } }
 ];
 
 /**
