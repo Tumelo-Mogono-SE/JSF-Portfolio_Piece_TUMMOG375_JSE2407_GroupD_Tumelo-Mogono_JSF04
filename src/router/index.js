@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../pages/Home.vue';
 import ProductDetailView from '../pages/ProductDetailView.vue';
-
+import LoginPage from '../pages/LoginPage.vue';
+import Cart from '../pages/Cart.vue';
+import Comparison from '../pages/Comparison.vue';
+import Wishlist from '../pages/Wishlist.vue';
+import { useAuthenticationStore } from '../store/AuthenticationStore';
 
 /**
  * An Array of route definitions.
@@ -23,7 +27,15 @@ const routes = [
      * @property {string} path - The URL path, with a dynamic segment for the product ID.
      * @property {Object} component - The component to render for this path.
      */
-    { path: '/products/:id', component: ProductDetailView }
+    { path: '/products/:id', component: ProductDetailView },
+
+    { path: '/login', component: LoginPage },
+
+    { path: '/cart', component: Cart, meta: {requiresAuth: true}  },
+
+    { path: '/comparisonlist', component: Comparison, meta: { requiresAuth: true }},
+
+    { path: '/wishlist', component: Wishlist, meta: {requiresAuth: true}  },
 ];
 
 /**
@@ -35,6 +47,17 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+});
+
+router.beforeEach((to, from, next) => {
+    const authenticationStore = useAuthenticationStore();
+    if (to.meta.requiresAuth && !authenticationStore.isAuthenticated()) {
+      authenticationStore.returnTo = to.fullPath;
+      console.log(authenticationStore.returnTo);
+      next('/login');
+    } else {
+      next();
+    }
 });
 
 export default router;
