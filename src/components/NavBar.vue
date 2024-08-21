@@ -3,11 +3,13 @@
   import { onMounted } from 'vue';
   import { useRouter } from 'vue-router'
   import {useAuthenticationStore} from '../store/AuthenticationStore.js';
+  import { useWishlistStore } from '../store/WishlistStore.js'
   import { useCartStore } from '../store/CartStore.js';
 
   const authenticationStore = useAuthenticationStore();
   const router = useRouter();
   const cartStore = useCartStore();
+  const wishlistStore = useWishlistStore();
 
 
   let isNavbarVisible = ref(false);
@@ -80,6 +82,7 @@
                 >
                     <div class="t-0 absolute left-5 -top-4">
                         <p class="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
+                          {{ wishlistStore.wishlist.length }}
                         </p>
                     </div>
                     <p>Wishlist</p>
