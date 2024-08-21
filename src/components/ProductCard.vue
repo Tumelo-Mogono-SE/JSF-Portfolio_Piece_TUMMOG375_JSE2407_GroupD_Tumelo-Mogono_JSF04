@@ -15,10 +15,12 @@
   };
 
   const props = defineProps({
-    id: String,
+    id: Number,
     title: String,
+    description: String,
     image: String,
-    price: String,
+    price: Number,
+    rating: Object,
     category: String,
   });
 </script>
