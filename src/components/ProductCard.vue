@@ -11,10 +11,16 @@
 
   const addToCart = (product) => {
     cartStore.addToCart(product);
+    alert(`${product.title} has been added to your cart!`);
   };
 
   const addToComparison = (product) => {
     comparisonStore.addToComparison(product);
+    if (comparisonStore.comparisonList.length < 4) {
+      alert(`${product.title} has been added to your comparison list!`);
+    } else {
+      alert(`${product.title} cannot be added to your comparison list! Limit is 4`);
+    }
   };
 
   const isInWishlist = computed(() =>
@@ -24,8 +30,10 @@
   const toggleWishlist = () => {
     if (isInWishlist.value) {
       wishlistStore.removeFromWishlist(props.id);
+      alert(`${props.title} has been removed from your wishlist!`);
     } else {
       wishlistStore.addToWishlist(props);
+      alert(`${props.title} has been added to your wishlist!`);
     }
   };
 
