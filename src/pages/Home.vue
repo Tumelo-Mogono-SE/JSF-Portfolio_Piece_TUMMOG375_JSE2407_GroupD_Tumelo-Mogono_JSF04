@@ -22,8 +22,8 @@
 <template>
     <div>
         <div class="grid lg:flex gap-y-4 gap-x-48 lg:items-start mt-3 mx-auto justify-center">
-            <Filter />
-            <Sort />
+            <Filter :store="store"/>
+            <Sort :store="store"/>
         </div>
         <ProductList />
     </div>
