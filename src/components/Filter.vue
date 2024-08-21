@@ -1,11 +1,17 @@
 <script setup>
     import { ref, onMounted } from 'vue';
-    import { useProductStore } from '../store/useProductStore';
     import { getCategories } from '../api/api';
+
+    const props = defineProps({
+      store: {
+        type: Object,
+        required: true
+      }
+    })
   
-    const store = useProductStore();
-    const selectedCategory = ref(store.filterItem);
+    const selectedCategory = ref(props.store.filterItem);
     const categories = ref([]);
+
   
     /**
      * Fetches categories when the component is mounted.
@@ -22,7 +28,7 @@
      * @function
     */
     const applyFilter = () => {
-        store.setFilterItem(selectedCategory.value);
+        props.store.setFilterItem(selectedCategory.value);
     };
 </script>
 
